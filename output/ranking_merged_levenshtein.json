@@ -1,0 +1,461 @@
+{
+  "excluded_tags": [
+    "unknown"
+  ],
+  "merge_rule": "levenshtein(case-insensitive) <= 3, panjang >= 5, bukan beda angka saja",
+  "merged_pairs": [
+    {
+      "a": "WRJBOYZ",
+      "b": "<WRJBOYZ>",
+      "distance": 2
+    },
+    {
+      "a": "PRIASOLO",
+      "b": "PRIA_SOLO",
+      "distance": 1
+    },
+    {
+      "a": "Purify",
+      "b": "PURIFY",
+      "distance": 0
+    },
+    {
+      "a": "Bebas",
+      "b": "BebasAja",
+      "distance": 3
+    }
+  ],
+  "hold_time": "SUM(latency_us_sum) - ASUMSI proksi",
+  "weights": {
+    "hold": 0.35,
+    "ok": 0.3,
+    "bytes_out": 0.2,
+    "requests": 0.15
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "group": "team5",
+      "score": 100.0,
+      "tags": [
+        "team5"
+      ],
+      "points": {
+        "hold": 100.0,
+        "ok": 100.0,
+        "bytes_out": 100.0,
+        "requests": 100.0
+      },
+      "totals": {
+        "requests": 322482231619,
+        "ok": 322482231615,
+        "bytes_out": 4192269010956,
+        "latency_us_sum": 7905179909
+      }
+    },
+    {
+      "rank": 2,
+      "group": "WRJBOYZ",
+      "score": 62.0005,
+      "tags": [
+        "WRJBOYZ",
+        "<WRJBOYZ>"
+      ],
+      "points": {
+        "hold": 61.7748,
+        "ok": 62.1221,
+        "bytes_out": 62.1221,
+        "requests": 62.1221
+      },
+      "totals": {
+        "requests": 200332717121,
+        "ok": 200332717121,
+        "bytes_out": 2604325322534,
+        "latency_us_sum": 4883406688
+      }
+    },
+    {
+      "rank": 3,
+      "group": "PRIASOLO",
+      "score": 11.329,
+      "tags": [
+        "PRIASOLO",
+        "PRIA_SOLO"
+      ],
+      "points": {
+        "hold": 11.7178,
+        "ok": 11.1196,
+        "bytes_out": 11.1196,
+        "requests": 11.1196
+      },
+      "totals": {
+        "requests": 35858722968,
+        "ok": 35858722968,
+        "bytes_out": 466163398571,
+        "latency_us_sum": 926314757
+      }
+    },
+    {
+      "rank": 4,
+      "group": "Purify",
+      "score": 1.8459,
+      "tags": [
+        "Purify",
+        "PURIFY"
+      ],
+      "points": {
+        "hold": 1.7793,
+        "ok": 1.8817,
+        "bytes_out": 1.8817,
+        "requests": 1.8817
+      },
+      "totals": {
+        "requests": 6068228807,
+        "ok": 6068228807,
+        "bytes_out": 78886974491,
+        "latency_us_sum": 140656679
+      }
+    },
+    {
+      "rank": 5,
+      "group": "RR_VN",
+      "score": 0.1419,
+      "tags": [
+        "RR_VN"
+      ],
+      "points": {
+        "hold": 0.1633,
+        "ok": 0.1304,
+        "bytes_out": 0.1304,
+        "requests": 0.1304
+      },
+      "totals": {
+        "requests": 420582567,
+        "ok": 420582567,
+        "bytes_out": 5467573371,
+        "latency_us_sum": 12911010
+      }
+    },
+    {
+      "rank": 6,
+      "group": "7",
+      "score": 0.0232,
+      "tags": [
+        "7"
+      ],
+      "points": {
+        "hold": 0.0331,
+        "ok": 0.0178,
+        "bytes_out": 0.0178,
+        "requests": 0.0178
+      },
+      "totals": {
+        "requests": 57474896,
+        "ok": 57474896,
+        "bytes_out": 747173648,
+        "latency_us_sum": 2617750
+      }
+    },
+    {
+      "rank": 7,
+      "group": "NX-R7KJN",
+      "score": 0.0046,
+      "tags": [
+        "NX-R7KJN"
+      ],
+      "points": {
+        "hold": 0.0047,
+        "ok": 0.0046,
+        "bytes_out": 0.0046,
+        "requests": 0.0046
+      },
+      "totals": {
+        "requests": 14695927,
+        "ok": 14695927,
+        "bytes_out": 191047051,
+        "latency_us_sum": 369514
+      }
+    },
+    {
+      "rank": 8,
+      "group": "Bebas",
+      "score": 0.0014,
+      "tags": [
+        "Bebas",
+        "BebasAja"
+      ],
+      "points": {
+        "hold": 0.0032,
+        "ok": 0.0005,
+        "bytes_out": 0.0005,
+        "requests": 0.0005
+      },
+      "totals": {
+        "requests": 1548487,
+        "ok": 1548487,
+        "bytes_out": 20130331,
+        "latency_us_sum": 253308
+      }
+    },
+    {
+      "rank": 9,
+      "group": "11",
+      "score": 0.0,
+      "tags": [
+        "11"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 62880,
+        "ok": 62880,
+        "bytes_out": 817440,
+        "latency_us_sum": 3172
+      }
+    },
+    {
+      "rank": 10,
+      "group": "NX-MYAS9",
+      "score": 0.0,
+      "tags": [
+        "NX-MYAS9"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 161,
+        "ok": 161,
+        "bytes_out": 2093,
+        "latency_us_sum": 38
+      }
+    },
+    {
+      "rank": 11,
+      "group": "12345",
+      "score": 0.0,
+      "tags": [
+        "12345"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 1
+      }
+    },
+    {
+      "rank": 12,
+      "group": "team3",
+      "score": 0.0,
+      "tags": [
+        "team3"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 16,
+        "ok": 16,
+        "bytes_out": 208,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 13,
+      "group": "undana",
+      "score": 0.0,
+      "tags": [
+        "undana"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 3,
+        "ok": 3,
+        "bytes_out": 39,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 14,
+      "group": "TidakAda",
+      "score": 0.0,
+      "tags": [
+        "TidakAda"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 15,
+      "group": "ID_TIM",
+      "score": 0.0,
+      "tags": [
+        "ID_TIM"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 16,
+      "group": "NX-BA7ZP",
+      "score": 0.0,
+      "tags": [
+        "NX-BA7ZP"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 17,
+      "group": "1",
+      "score": 0.0,
+      "tags": [
+        "1"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 18,
+      "group": "2",
+      "score": 0.0,
+      "tags": [
+        "2"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 19,
+      "group": "3",
+      "score": 0.0,
+      "tags": [
+        "3"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 20,
+      "group": "testfoo",
+      "score": 0.0,
+      "tags": [
+        "testfoo"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 0
+      }
+    },
+    {
+      "rank": 21,
+      "group": "209",
+      "score": 0.0,
+      "tags": [
+        "209"
+      ],
+      "points": {
+        "hold": 0.0,
+        "ok": 0.0,
+        "bytes_out": 0.0,
+        "requests": 0.0
+      },
+      "totals": {
+        "requests": 1,
+        "ok": 1,
+        "bytes_out": 13,
+        "latency_us_sum": 0
+      }
+    }
+  ]
+}
