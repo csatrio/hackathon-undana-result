@@ -18,9 +18,55 @@ Setiap finalis menunjukkan spesialisasi dan efisiensi serang yang berbeda di med
 
 > **Catatan Teknis Panitia:** Masuk ke jajaran finalis berarti skrip, arsitektur _multithreading_, dan alur koneksi tim Anda berhasil mengeksekusi _pipeline_ jaringan di bawah tekanan sistem sungguhan. Angka di atas mencerminkan skor relatif terhadap parameter beban puncak hari ini.
 
+## 🌟 Honorable Mention: Bebas Aja
+
+Panitia memberikan _honorable mention_ kepada tim **Bebas Aja**, peringkat 6 pada klasemen resmi babak final (skor 0,02). Tim ini juga menempati **peringkat 1 pada Papan Skor Babak 2** (lihat bagian di bawah), sehingga kemampuannya jelas tidak diragukan. Menurut analisis panitia, Bebas Aja **seharusnya dapat menempati peringkat 5** seandainya berhasil menebak format header yang diminta server.
+
+**Apa yang terjadi?** Identitas tim dibaca server dari header `X-Team-Id`. Server hanya menerima nilai yang terdiri dari 1 sampai 64 karakter ASCII yang dapat dicetak **tanpa spasi**. Nama tim **"Bebas Aja"** mengandung spasi, sehingga lalu lintasnya dicatat sebagai `unknown`, lalu disaring keluar dari penilaian sesuai aturan sanitasi log (bagian _Integritas Data_, poin 2). Aturan "tanpa spasi" ini tidak dinyatakan secara eksplisit dalam petunjuk untuk peserta, sehingga hampir mustahil ditebak tanpa mencoba berbagai format.
+
+**Seberapa dekat?** Berikut hitungan simulasi dengan rumus dan bobot yang sama seperti klasemen resmi:
+
+|**Keterangan**|**Nilai**|
+|---|---|
+|Skor resmi Bebas Aja (tag `7`)|0,02|
+|Skor peringkat 5 (RR_VN)|0,14|
+|Skor peringkat 4 (Purify)|1,85|
+|Total lalu lintas `unknown` (seluruh tim, tidak bisa dipisahkan per tim)|1,21 miliar request, 15,8 GB data tertulis|
+|Bagian dari `unknown` yang cukup untuk melewati RR_VN|sekitar 25,5% (± 310 juta request)|
+|Skor tertinggi yang mungkin (jika seluruh `unknown` dihitung untuk Bebas Aja)|sekitar 0,49|
+
+Artinya, Bebas Aja cukup memiliki seperempat dari lalu lintas `unknown` untuk naik ke peringkat 5. Sebaliknya, bahkan jika seluruh lalu lintas `unknown` dihitung untuk mereka, skornya (± 0,49) tetap di bawah Purify (1,85), sehingga **peringkat 5 adalah batas tertinggi yang mungkin**.
+
+> **Catatan:** Lalu lintas `unknown` tidak dapat dipetakan ke tim tertentu, jadi angka di atas adalah simulasi, bukan klasemen resmi. **Klasemen resmi tidak diubah.** Penghargaan ini diberikan sebagai bentuk apresiasi atas usaha tim.
+
+## 📋 Hasil Babak 2
+
+Hasil babak 2 tersedia di repositori ini, di direktori yang sama dengan `README.md`:
+
+|**Berkas**|**Isi**|
+|---|---|
+|[`SKOR-BABAK-2.png`](SKOR-BABAK-2.png)|Papan skor babak 2: peringkat, nama tim, jumlah anggota, total poin, rata-rata poin, serta waktu _solve_ pertama dan terakhir (WIB). Label **FINAL** menandai tim yang melaju ke babak final.|
+|[`LOGIKA-PENJURIAN-BABAK-2.png`](LOGIKA-PENJURIAN-BABAK-2.png)|Logika penjurian babak 2 beserta _query_ SQL yang dipakai untuk menghitung peringkat.|
+
+**Papan Skor Babak 2**
+
+![Papan Skor Babak 2](SKOR-BABAK-2.png)
+
+**Logika Penjurian Babak 2**
+
+![Logika Penjurian Babak 2](LOGIKA-PENJURIAN-BABAK-2.png)
+
+Ringkasan logika penjurian babak 2 (selengkapnya, termasuk _query_ SQL, ada pada gambar di atas):
+1. Skor tim adalah **rata-rata poin seluruh anggota aktif**; anggota yang tidak memiliki _solve_ dihitung 0.
+2. Jika rata-rata poin sama, tim dengan **_solve_ terakhir paling awal** berada di peringkat lebih tinggi.
+3. Peringkat dihitung langsung oleh _query_ SQL dari data _solve_, bukan penilaian manual. Seluruh waktu ditampilkan dalam **WIB**.
+
 ## 🧮 Logika Perhitungan & Transparansi Skor
 
 Penilaian dilakukan secara otomatis berbasis telemetri murni tanpa intervensi subjektif juri. Sistem penilaian menggunakan metode **Normalisasi Relatif Puncak (_Peak-Relative Normalization_)**, di mana performa tertinggi pada masing-masing metrik ditetapkan sebagai patokan nilai 100, dan performa tim lain dihitung proporsional terhadap nilai puncak tersebut.
+
+> **⚠️ Catatan tampilan:** Rumus matematika pada bagian ini ditulis dengan sintaks LaTeX (`$...$` dan `$$...$$`) dan **mungkin tidak tampil dengan benar di halaman README GitHub**. Untuk melihat rumus dengan benar, buka `README.md` ini dengan _markdown viewer_ yang mendukung rumus matematika, misalnya **Obsidian**. Versi teks biasa dari rumus yang sama tersedia tepat di bawah rumus.
+
 ### 1. Formula Matematis
 Skor akhir setiap tim $i$ dihitung dengan rumus:
 $$\text{Skor Akhir}_i = \sum_{k=1}^{4} \left( W_k \times \frac{M_{i,k}}{\max_{j}(M_{j,k})} \times 100 \right)$$
@@ -29,6 +75,12 @@ Di mana:
 - $M_{i,k}$ adalah nilai mentah metrik ke-$k$ yang diperoleh tim $i$.
 - $\max_{j}(M_{j,k})$ adalah capaian nilai tertinggi dari seluruh tim pada metrik ke-$k$.
 - $W_k$ adalah bobot persentase metrik ke-$k$.
+
+**Versi teks biasa (jika rumus di atas tidak tampil):**
+```
+Skor Akhir (tim i) = jumlah untuk k = 1 sampai 4 dari:
+                     bobot_k x (nilai_tim_i_pada_metrik_k / nilai_tertinggi_semua_tim_pada_metrik_k) x 100
+```
 
 ### 2. Matriks Bobot Penilaian
 
@@ -134,6 +186,8 @@ result-hackathon-undana/
 │   ├── process_telemetry.py       # Engine kalkulasi skor & normalisasi data mentah
 │   └── pull_system_telemetry.py   # Sinkronisasi log telemetri dari host pengujian
 ├── output/                        # Rekapitulasi hasil kalkulasi per tag & JSON leaderboard
+├── SKOR-BABAK-2.png               # Papan skor babak 2
+├── LOGIKA-PENJURIAN-BABAK-2.png   # Logika penjurian babak 2 + query SQL
 └── telemetry_database.zip         # Arsip database SQLite mentah (ekstrak sebelum dijalankan)
 ```
 
